@@ -13,7 +13,7 @@
                 $.get("http://localhost:8080/ws/organization", function (data) {
                     $.map(data, function (key, value) {
                         alert(value + ':' + key);
-                        $("h1").html("Data: " + data);
+                        $("h1").append("Data: " + key+value);
                     });
                 });
             });
