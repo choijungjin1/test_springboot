@@ -10,14 +10,13 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 
 public class WeatherController {
-
-    @RequestMapping(value = "/remote/openweather", method = RequestMethod.POST)
+    @RequestMapping(value = "/remote/openweather", method = RequestMethod.GET)
     public Object actionMethod() {
     RestTemplate restTemplate = new RestTemplate();
     Object resultObject = new Object();
         String keyId = "c7530259fa51c14d5f06de82f87253e5";
-        String targetUri = "api.openweathermap.org/data/2.5/forecast/hourly?q=London,us&mode=xml" + keyId;
+        String targetUri = "https://api.openweathermap.org/data/2.5/forecast?q=London,us&appid=" + keyId;
         resultObject = restTemplate.getForObject(targetUri, Object.class);
-    return resultObject;
+        return resultObject;
     }
 }
